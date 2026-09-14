@@ -1,0 +1,37 @@
+@model List<CommunityBoard.Models.Post>
+
+<div class="hero">
+  <div>
+    <h1>Community Board</h1>
+    <p>Simple .NET + MongoDB 3-tier application.</p>
+  </div>
+  <a class="button" asp-action="Create">+ New Post</a>
+</div>
+
+@if (!Model.Any())
+{
+  <div class="empty"><h2>No posts yet</h2><p>Create the first community post.</p></div>
+}
+else
+{
+  <div class="grid">
+  @foreach (var post in Model)
+  {
+    <article class="card">
+      <div class="card-top">
+        <span class="tag">@post.Category</span>
+        <span class="status @(post.Status == "Resolved" ? "resolved" : "")">@post.Status</span>
+      </div>
+      <h2>@post.Title</h2>
+      <p>@post.Description</p>
+      <small>@post.CreatedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt")</small>
+      <div class="actions">
+        <a class="button secondary" asp-action="Edit" asp-route-id="@post.Id">Edit</a>
+        <form asp-action="Delete" asp-route-id="@post.Id" method="post" onsubmit="return confirm('Delete this post?');">
+          <button class="button danger" type="submit">Delete</button>
+        </form>
+      </div>
+    </article>
+  }
+  </div>
+}

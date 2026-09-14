@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Board</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<header class="topbar">
+    <div class="container nav">
+        <a class="brand" asp-controller="Posts" asp-action="Index">Community Board</a>
+        <a class="nav-link" asp-controller="Posts" asp-action="Create">Create Post</a>
+    </div>
+</header>
+<main class="container">@RenderBody()</main>
+</body>
+</html>

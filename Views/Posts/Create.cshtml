@@ -1,0 +1,17 @@
+@model CommunityBoard.Models.Post
+<h1>Create Post</h1>
+<p class="muted">Add a simple community notice.</p>
+<div asp-validation-summary="All" class="validation"></div>
+<form asp-action="Create" method="post" class="form-card">
+  <label asp-for="Title"></label>
+  <input asp-for="Title" maxlength="120" />
+  <span asp-validation-for="Title"></span>
+  <label asp-for="Category"></label>
+  <select asp-for="Category">
+    <option>General</option><option>Announcement</option><option>Event</option><option>Help</option><option>Lost & Found</option>
+  </select>
+  <label asp-for="Description"></label>
+  <textarea asp-for="Description" rows="7"></textarea>
+  <span asp-validation-for="Description"></span>
+  <div class="actions"><button class="button" type="submit">Save Post</button><a class="button secondary" asp-action="Index">Cancel</a></div>
+</form>

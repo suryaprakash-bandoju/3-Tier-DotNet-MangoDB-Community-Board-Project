@@ -1,0 +1,19 @@
+@model CommunityBoard.Models.Post
+<h1>Edit Post</h1>
+<p class="muted">Update the post information or resolve it.</p>
+<div asp-validation-summary="All" class="validation"></div>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-card">
+  <label asp-for="Title"></label>
+  <input asp-for="Title" maxlength="120" />
+  <span asp-validation-for="Title"></span>
+  <label asp-for="Category"></label>
+  <select asp-for="Category">
+    <option>General</option><option>Announcement</option><option>Event</option><option>Help</option><option>Lost & Found</option>
+  </select>
+  <label asp-for="Status"></label>
+  <select asp-for="Status"><option>Open</option><option>Resolved</option></select>
+  <label asp-for="Description"></label>
+  <textarea asp-for="Description" rows="7"></textarea>
+  <span asp-validation-for="Description"></span>
+  <div class="actions"><button class="button" type="submit">Update Post</button><a class="button secondary" asp-action="Index">Cancel</a></div>
+</form>
